@@ -55,7 +55,7 @@ const orm = {
         queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
-        connection.query(queryString, (err, result) =>{
+        connection.query(queryString, vals, (err, result) =>{
             if (err) {
                 throw err;
             }

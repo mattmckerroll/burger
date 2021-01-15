@@ -23,12 +23,12 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.put("/burgers/:id", (req,res) => {
-      const condition  = `id = ${req.params.id}`;
+/*   router.put("/burgers/:id", (req,res) => {
+      let condition  = `id = ${req.params.id}`;
 
       burger.updateOne(
           {
-              devoured: req.body.devoured,
+              devoured: true,
           },
           condition,
           (result) => {
@@ -39,6 +39,20 @@ router.get('/', (req, res) => {
             res.status(200).end();
           }
       )
-  })
+  }) */
+
+  router.put("/burgers/:id", function (req, res) {
+    var condition = "id = " + req.params.id;
+
+    // console.log("condition", condition);
+
+    burger.updateOne({
+        devoured: true
+    }, condition, function (data) {
+        res.redirect("/");
+
+    });
+});
+
 
 module.exports = router;
