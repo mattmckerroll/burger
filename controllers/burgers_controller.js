@@ -23,34 +23,18 @@ router.get('/', (req, res) => {
       });
   });
 
-/*   router.put("/burgers/:id", (req,res) => {
-      let condition  = `id = ${req.params.id}`;
 
-      burger.updateOne(
-          {
-              devoured: true,
-          },
-          condition,
-          (result) => {
-            if (result.changedRows === 0) {
-              // If no rows were changed, then the ID must not exist, so 404
-              return res.status(404).end();
-            }
-            res.status(200).end();
-          }
-      )
-  }) */
-
+//the put route here does work, but for some reason, i need to reload the page to see the burger move to the devoured section
   router.put("/burgers/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 
     console.log("condition", condition);
 
     burger.updateOne({
-        devoured: true
+        devoured: 1
     }, condition, function (data) {
         res.redirect("/");
-
+       
     });
 });
 
