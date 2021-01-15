@@ -8,7 +8,7 @@ const burger = require('../models/burger.js');
 
 //create the router here and export the router
 router.get('/', (req, res) => {
-    cat.all((data) => {
+    burger.selectAll((data) => {
       const hbsObject = {
         burgers: data,
       };
